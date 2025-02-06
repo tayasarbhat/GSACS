@@ -1,0 +1,101 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --gradient-start: #4f46e5;
+  --gradient-middle: #7c3aed;
+  --gradient-end: #db2777;
+}
+
+.glass {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 
+    0 8px 32px 0 rgba(31, 38, 135, 0.2),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+}
+
+.glass-hover:hover {
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(20px);
+}
+
+.gradient-text {
+  background: linear-gradient(to right, #fff, rgba(255, 255, 255, 0.8));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.animate-gradient {
+  background: linear-gradient(
+    270deg,
+    var(--gradient-start),
+    var(--gradient-middle),
+    var(--gradient-end)
+  );
+  background-size: 200% 200%;
+  animation: gradient 15s ease infinite;
+}
+
+@keyframes gradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+body {
+  @apply animate-gradient;
+  min-height: 100vh;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.4);
+}
+
+/* Animations */
+@keyframes slide-in {
+  from { 
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to { 
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate-slide-in {
+  animation: slide-in 0.2s ease-out forwards;
+}
+
+/* Table Responsive Styles */
+@media (max-width: 768px) {
+  .table-container {
+    margin: 0 -1rem;
+  }
+  
+  table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+}
